@@ -2,8 +2,9 @@ name: Test Action
 on: [push]
 jobs:
   test-job-1:
+    if: contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo hello world
+      - run: git describe
 
