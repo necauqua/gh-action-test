@@ -2,9 +2,12 @@ name: Test Action
 on: [push]
 jobs:
   test-job-1:
-    if: contains(github.ref, 'refs/tags/')
+    # if: contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git describe
+      - uses: actions/setup-python@v2
+        with: 
+          python-version: 3.x
+      - run: python autolog.py
 
