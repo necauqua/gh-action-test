@@ -1,0 +1,32 @@
+name: Update Changelog
+on:
+  - push
+jobs:
+  update-changelog:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.x
+      - name: Checkout the main repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Checkout the wiki
+        uses: actions/checkout@v2
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+      - name: Generate the changelog
+        run: python .github/scripts/generate-changelog.py | tee wiki/Changelog.md
+      - name: Push to wiki
+        run: |
+          cd wiki
+          git config --local user.email action@github.com
+          git config --local user.name 'Update Changelog Action'
+          git add .
+          git commit -m 'Update changelog'
+          git push
+
