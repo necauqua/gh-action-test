@@ -1,4 +1,5 @@
 name: Extract Changelog
+author: necauqua
 description: Exctract changelog from approproately formatted git commit bodies
 inputs:
   root-commit:

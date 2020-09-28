@@ -27,8 +27,14 @@ jobs:
         uses: ./render-changelog
         with:
           date-format: 1%F
-          changelog-template: .github/workflows/changelog-template.md
+          template: .github/workflows/changelog-template.md
           filename: wiki/Changelog.md
+
+      - name: Generate Forge Updates
+        uses: ./generate-forge-updates
+        with:
+          template: .github/workflows/updates-template.json
+          filename: wiki/updates.json
 
       - name: Push to wiki
         run: |

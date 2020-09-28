@@ -1,0 +1,19 @@
+name: Generate Forge Updates
+author: necauqua
+description: Renders the extracted YAML changelog into a Forge updates JSON file
+inputs:
+  changelog:
+    description: Input changelog YAML file
+    required: true
+    default: changelog.yml
+  template:
+    description: JSON template file with predefined values etc.
+    required: false
+  filename:
+    description: Resulting JSON file name
+    required: true
+    default: updates.json
+runs:
+  using: docker
+  image: Dockerfile
+

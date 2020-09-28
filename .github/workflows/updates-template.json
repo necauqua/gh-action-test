@@ -1,0 +1,10 @@
+{
+    "homepage": "https://github.com/necauqua/gh-action-test",
+    "1.0": {
+        "0.0.9": "some prev test idk"
+    },
+    "promos": {
+        "1.0-latest": "0.0.9",
+        "1.0-recomended": "0.0.9"
+    }
+}

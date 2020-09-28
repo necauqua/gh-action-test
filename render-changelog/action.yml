@@ -6,7 +6,7 @@ inputs:
     description: Input changelog YAML file
     required: true
     default: changelog.yml
-  changelog-template:
+  template:
     description: Changelog template file
     required: false
   tag-format:
@@ -34,5 +34,5 @@ runs:
     - ${{ inputs.date-format }}
     - ${{ inputs.unreleased-header }}
     - ${{ inputs.filename }}
-    - ${{ inputs.changelog-template }}
+    - ${{ inputs.template }}
 

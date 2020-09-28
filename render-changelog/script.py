@@ -7,7 +7,7 @@ from datetime import datetime
 def section(header, log):
     s = f'## {header}\n'
     for key in sorted(log.keys()):
-        s += f'### {key.capitalize()}\n'
+        s += f'### {key.capitalize()}:\n'
         for item in log[key]:
             s += f'  - {item}\n'
     return s + '\n'
