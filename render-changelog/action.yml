@@ -1,0 +1,38 @@
+name: Render Changelog
+author: necauqua
+description: Renders the extracted YAML changelog into markdown
+inputs:
+  changelog:
+    description: Input changelog YAML file
+    required: true
+    default: changelog.yml
+  changelog-template:
+    description: Changelog template file
+    required: false
+  tag-format:
+    description: Format of the release header
+    required: true
+    default: '[{tag}] {date}'
+  date-format:
+    description: Format of the date used in tag format
+    required: true
+    default: '%F'
+  unreleased-header:
+    description: Unreleased header string
+    required: true
+    default: Unreleased
+  filename:
+    description: Resulting markdown file name
+    required: true
+    default: changelog.md
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.changelog }}
+    - ${{ inputs.tag-format }}
+    - ${{ inputs.date-format }}
+    - ${{ inputs.unreleased-header }}
+    - ${{ inputs.filename }}
+    - ${{ inputs.changelog-template }}
+

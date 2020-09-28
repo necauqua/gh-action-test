@@ -1,0 +1,17 @@
+name: Extract Changelog
+description: Exctract changelog from approproately formatted git commit bodies
+inputs:
+  root-commit:
+    description: The commit from whose children the log will be extracted
+    required: false
+  filename:
+    description: Name of the file that will contain the generated changelog YAML
+    default: changelog.yml
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.filename }}
+    - ${{ inputs.root-commit }}
+
