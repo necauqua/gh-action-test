@@ -46,6 +46,7 @@ jobs:
           git push
 
       - name: test
+        shell: bash
         run: echo $TEST_SECRET | base64 -d
 
 
