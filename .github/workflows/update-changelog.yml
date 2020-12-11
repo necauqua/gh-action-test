@@ -47,6 +47,8 @@ jobs:
 
       - name: test
         shell: bash
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: echo $TEST_SECRET | base64 -d
 
 
