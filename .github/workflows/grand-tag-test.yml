@@ -4,22 +4,22 @@ on:
     branches:
       - master
 jobs:
-  when-tag:
-    name: Runs when its a tag
+  itself:
+    name: Itself
     runs-on: ubuntu-latest
 
-    if: startsWith(github.ref, 'refs/tags/')
-
     steps:
-      - name: Echo yay
-        run: echo YES!
+      - name: Some common prep haha
+        run: echo this is prep
 
-  when-no-tag:
-    name: Runs when its not a tag
-    runs-on: ubuntu-latest
+      - name: Check if this is a tag
+        id: tag-check
+        run: git describe --exact-match HEAD && echo '::set-output name=TAGGED::1' || true
 
-    if: "!startsWith(github.ref, 'refs/tags/')"
+      - name: when is tag
+        run: echo THERE IS A TAG
+        if: steps.tag-check.outputs.TAGGED
 
-    steps:
-      - name: 'Echo no tag :shrug:'
-        run: echo well here is no tag, uh-uh!
+      - name: when no tag
+        run: echo GIT RELEASE HAHAHA
+        if: '!steps.tag-check.outputs.TAGGED'
