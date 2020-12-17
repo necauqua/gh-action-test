@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout the repo (needed for building anyway, but we also get to know if we're tagged)
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Some common prep haha
         run: echo this is prep
 
